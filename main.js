@@ -407,6 +407,7 @@ AirBreak.process = function (localPlayer)
     {
     physicsComponent.body.state.orientation.x = 0;
     physicsComponent.body.state.orientation.y = 0;
+    physicsComponent.body.state.orientation.w = 0;
 
     physicsComponent.body.state.angularVelocity.x = 0;
     physicsComponent.body.state.angularVelocity.y = 0;

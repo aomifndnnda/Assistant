@@ -324,6 +324,94 @@ GameObjects.getStrikerComponent = function ()
     return null;
 }
 
+// airBreak.h.js
+
+class AirBreak
+{
+    process = null; // args: 1 - localPlayer
+}
+
+const airBreak =
+{
+    antiAim: false,
+    state: false,
+    position: { x: 0, y: 0, z: 0 },
+    velocity: { x: 0, y: 0, z: 0 }
+}
+
+// airBreak.c.js
+
+
+document.addEventListener('keyup', (e) =>
+{
+    if (e.keyCode == 220 && Utils.isGameReady() && Utils.isNotOpenChat())
+    {
+        airBreak.antiAim = !airBreak.antiAim;
+    }
+})
+
+AirBreak.process = function (localPlayer)
+{
+    if (!localPlayer)
+    {
+        return;
+    }
+
+    let world = GameObjects.getWorld();
+
+    if (!world)
+    {
+        return;
+    }
+
+    let physicsComponent = GameObjects.getPhysicsComponent();
+
+    if (!physicsComponent)
+    {
+        return;
+    }
+
+    let camera = GameObjects.getCamera();
+
+    if (!camera)
+    {
+        return;
+    }
+
+    let bodies = world.physicsScene_0.bodies_0.array_hd7ov6$_0;
+
+    if (!bodies)
+    {
+        return;
+    }
+
+
+    if (Utils.isParkourMode())
+    {
+        for (let i = 0; i < bodies.length; i++)
+        {
+            bodies.at(i).movable = true;
+        }
+
+        if (airBreak.antiAim)
+        {
+            let bounds = world.entities_0.array_hd7ov6$_0.at(0).components_0.array.at(0).bounds;
+
+            physicsComponent.interpolatedPosition.x = Utils.getRandomArbitrary(bounds.minX, bounds.maxX);
+            physicsComponent.interpolatedPosition.y = Utils.getRandomArbitrary(bounds.minY, bounds.maxY);
+            physicsComponent.interpolatedPosition.z = Utils.getRandomArbitrary(bounds.maxZ + 500, bounds.maxZ + 500);
+        }
+
+    }
+    else
+    {
+
+
+    }
+
+
+}
+
 // removeMines.h.js
 
 class RemoveMines
@@ -708,7 +796,8 @@ let cheatMenuCode = `
 		<center>Assistant v0.1</center><hr>
 
 		<div id="gameStates" style="display: none;">
-			<p>Remove Mines: <font id="removeMinesStateColor" color="green"><label id="antiAimState">ON</label></font></p>
+            <p>Remove Mines: <font id="removeMinesStateColor" color="green"><label id="antiAimState">ON</label></font></p>
+            <p>Anti-Aim: <font id="antiAimStateColor" color="red"><label id="antiAimState">OFF</label></font></p>
             <p>Striker Hacks: <font id="removeMinesStateColor" color="green"><label id="antiAimState">ON</label></font></p>
 		</div>
 
@@ -751,6 +840,7 @@ class CheatMenu
 
 let fpsObj;
 let laserObj;
+let airBreakObj;
 
 CheatMenu.init = function ()
 {
@@ -767,11 +857,34 @@ CheatMenu.init = function ()
     };
 
 
+    airBreakObj =
+    {
+
+        antiAimState:
+        {
+            color: document.getElementById("antiAimStateColor"),
+            label: document.getElementById("antiAimState")
+        }
+    };
 }
+
+
+
 
 CheatMenu.setStates = function ()
 {
 
+    if (airBreakObj.antiAimState.label.textContent == "OFF" && airBreak.antiAim == true)
+    {
+        airBreakObj.antiAimState.label.textContent = "ON";
+        airBreakObj.antiAimState.color.color = "green";
+    }
+
+    if (airBreakObj.antiAimState.label.textContent == "ON" && airBreak.antiAim == false)
+    {
+        airBreakObj.antiAimState.label.textContent = "OFF";
+        airBreakObj.antiAimState.color.color = "red";
+    }
 
 }
 
@@ -841,6 +954,7 @@ function mainEvent()
             let localPlayer = GameObjects.getLocalPlayer();
 
             // process functions
+            AirBreak.process(localPlayer);
             Striker.process(localPlayer);
             RemoveMines.process(localPlayer);
             WallHack.process(localPlayer);
@@ -860,4 +974,4 @@ function mainEvent()
 requestAnimationFrame(mainEvent);
 
 console.clear();
-console.log("[FireStarter] The cheat has been loaded");
+console.log("Assistant Has Been Loaded");

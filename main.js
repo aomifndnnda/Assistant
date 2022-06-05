@@ -1,5 +1,3 @@
-// utils.h.js
-
 class Utils
 {
     getRootElement      = null; // args: void
@@ -461,8 +459,6 @@ RemoveMines.process = function (localPlayer)
 
 
 
-// striket.h.js
-
 class Striker
 {
     init = null; // args: 1 - localPlayer
@@ -475,9 +471,11 @@ let shellCache = null;
 let state = false;
 let salvoRocketsCount = 8;
 let targetId;
+let strikerHack = false
 
 Striker.init = function (localPlayer)
 {
+
     if (!localPlayer)
     {
         return;
@@ -496,6 +494,7 @@ Striker.init = function (localPlayer)
     {
         return;
     }
+
 
     let targetingSystem = striker.targetingSystem_0.targetingSystem_0;
     let targetingSectorsCalculator = targetingSystem.directionCalculator_0.targetingSectorsCalculator_0;
@@ -522,8 +521,11 @@ Striker.init = function (localPlayer)
     }
 }
 
+
 Striker.process = function (localPlayer)
 {
+    if (strikerHack)
+    {
     if (!localPlayer)
     {
         return;
@@ -578,6 +580,14 @@ Striker.process = function (localPlayer)
         }
     }
 }
+}
+    document.addEventListener('keyup', (e) =>
+{
+    if (e.keyCode == 36 && Utils.isGameReady() && Utils.isNotOpenChat())
+    {
+         strikerHack = !strikerHack;
+    }
+})
 
 
 
@@ -807,9 +817,10 @@ let cheatMenuCode = `
 		<center>Assistant v0.1</center><hr>
 
 		<div id="gameStates" style="display: none;">
-            <p>Remove Mines: <font id="removeMinesStateColor" color="green"><label id="removeMinesState">ON</label></font></p>
+            <p>Striker Hack: <font id="strikerHackStateColor" color="red"><label id="strikerHackState">OFF</label></font></p>
             <p>Anti-Aim: <font id="antiAimStateColor" color="red"><label id="antiAimState">OFF</label></font></p>
             <p>Striker Hacks: <font id="dvdv" color="green"><label id="nahaha">ON</label></font></p>
+            <p>Remove Mines: <font id="removeMinesStateColor" color="green"><label id="removeMinesState">ON</label></font></p>
 		</div>
 
 		<div id="infoWindow">
@@ -851,6 +862,7 @@ class CheatMenu
 
 let fpsObj;
 let airBreakObj;
+let strikerObj;
 
 CheatMenu.init = function ()
 {
@@ -876,6 +888,15 @@ CheatMenu.init = function ()
             label: document.getElementById("antiAimState")
         }
     };
+     strikerObj =
+    {
+
+        strikerHackState:
+        {
+            color: document.getElementById("strikerHackStateColor"),
+            label: document.getElementById("strikerHackState")
+        }
+    };
 }
 
 
@@ -896,6 +917,17 @@ CheatMenu.setStates = function ()
         airBreakObj.antiAimState.color.color = "red";
     }
 
+    if (strikerObj.strikerHackState.label.textContent == "OFF" && strikerHack == true)
+    {
+        strikerObj.strikerHackState.label.textContent = "ON";
+        strikerObj.strikerHackState.color.color = "green";
+    }
+
+    if (strikerObj.strikerHackState.label.textContent == "ON" && strikerHack == false)
+    {
+        strikerObj.strikerHackState.label.textContent = "OFF";
+        strikerObj.strikerHackState.color.color = "red";
+    }
 }
 
 // content.c.js

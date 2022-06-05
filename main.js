@@ -390,7 +390,7 @@ AirBreak.process = function (localPlayer)
     {
         for (let i = 0; i < bodies.length; i++)
         {
-            bodies.at(i).movable = false;
+            bodies.at(i).movable = true;
         }
 
         if (airBreak.antiAim)
@@ -405,7 +405,12 @@ AirBreak.process = function (localPlayer)
     }
     else
     {
+    physicsComponent.body.state.orientation.x = 0;
+    physicsComponent.body.state.orientation.y = 0;
 
+    physicsComponent.body.state.angularVelocity.x = 0;
+    physicsComponent.body.state.angularVelocity.y = 0;
+    physicsComponent.body.state.angularVelocity.z = 0;
 
     }
 

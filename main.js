@@ -799,6 +799,7 @@ let cheatMenuCode = `
             font-size: 0.9375rem;
             font-weight: 500;
             border-radius: 15px;
+            outline: 3px solid white;
         }
 	</style>
 

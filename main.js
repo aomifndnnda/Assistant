@@ -390,7 +390,7 @@ AirBreak.process = function (localPlayer)
     {
         for (let i = 0; i < bodies.length; i++)
         {
-            bodies.at(i).movable = true;
+            bodies.at(i).movable = false;
         }
 
         if (airBreak.antiAim)

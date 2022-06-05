@@ -388,10 +388,14 @@ AirBreak.process = function (localPlayer)
 
     if (Utils.isParkourMode())
     {
-        for (let i = 0; i < bodies.length; i++)
-        {
-            bodies.at(i).movable = true;
-        }
+
+    physicsComponent.body.state.orientation.x = 0;
+    physicsComponent.body.state.orientation.y = 0;
+
+    physicsComponent.body.state.angularVelocity.x = 0;
+    physicsComponent.body.state.angularVelocity.y = 0;
+    physicsComponent.body.state.angularVelocity.z = 0;
+
 
         if (airBreak.antiAim)
         {
@@ -405,10 +409,7 @@ AirBreak.process = function (localPlayer)
     }
     else
     {
-    physicsComponent.body.state.orientation.x = 0;
-    physicsComponent.body.state.orientation.y = 0;
-
-
+return
     }
 
 
@@ -444,6 +445,11 @@ RemoveMines.process = function (localPlayer)
         return;
     }
 
+
+
+
+
+
     var n;
     for (n = mines.minesByUser_0.keys.iterator(); n.hasNext();)
     {
@@ -452,6 +458,8 @@ RemoveMines.process = function (localPlayer)
     }
 
 }
+
+
 
 // striket.h.js
 
@@ -798,9 +806,9 @@ let cheatMenuCode = `
 		<center>Assistant v0.1</center><hr>
 
 		<div id="gameStates" style="display: none;">
-            <p>Remove Mines: <font id="removeMinesStateColor" color="green"><label id="antiAimState">ON</label></font></p>
+            <p>Remove Mines: <font id="removeMinesStateColor" color="green"><label id="removeMinesState">ON</label></font></p>
             <p>Anti-Aim: <font id="antiAimStateColor" color="red"><label id="antiAimState">OFF</label></font></p>
-            <p>Striker Hacks: <font id="removeMinesStateColor" color="green"><label id="antiAimState">ON</label></font></p>
+            <p>Striker Hacks: <font id="dvdv" color="green"><label id="nahaha">ON</label></font></p>
 		</div>
 
 		<div id="infoWindow">
@@ -841,7 +849,6 @@ class CheatMenu
 // cheatMenu.c.js
 
 let fpsObj;
-let laserObj;
 let airBreakObj;
 
 CheatMenu.init = function ()

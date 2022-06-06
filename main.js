@@ -824,7 +824,7 @@ let cheatMenuCode = `
 		<div id="gameStates" style="display: none;">
             <p>Striker Aimbot: <font id="sdffdsffd" color="green"><label id="scsdfcdst">ON</label></font></p>
             <p>Anti-Aim: <font id="antiAimStateColor" color="red"><label id="antiAimState">OFF</label></font></p>
-	    <p>Striker One Shot Toggle:  <font id="strikerHackStateColor" color="green"><label id="strikerHackState">Home</label></font></p>
+	    <p>Striker One Shot Toggle:  <font id="strikerHackStateColor" color="purple"><label id="strikerHackState">Home</label></font></p>
             <p><font id="strikerHackStateColor" color="purple"><label id="strikerHackState">Aimbot Is Always On</label></font></p>
             <p>Remove Mines: <font id="removeMinesStateColor" color="green"><label id="removeMinesState">ON</label></font></p>
 		</div>

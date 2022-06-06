@@ -557,6 +557,11 @@ Striker.process = function (localPlayer)
             setTimeout(() => { state = true; }, 2000);
         }
 
+	    if (!strikerHack)
+	    {
+clearTimeout()
+	    }
+	    
         if (state)
         {
             for (let i = 0; i < shellCache.length; i++)

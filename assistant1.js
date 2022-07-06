@@ -786,8 +786,7 @@ let cheatMenuCode = `
 
         .shizoval__content {
             padding: 15px;
-            background: "red";
-            backdrop-filter: blur(15px);
+            background: "#FF0000";
             box-shadow: 5 5px 15px black;
             font-family: 'Roboto', sans-serif;
             color: white;

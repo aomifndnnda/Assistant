@@ -786,7 +786,7 @@ let cheatMenuCode = `
 
         .shizoval__content {
             padding: 15px;
-            background: "#25500";
+            background: "#FF5733";
             box-shadow: 5 5px 15px black;
             font-family: 'Roboto', sans-serif;
             color: white;
@@ -798,7 +798,7 @@ let cheatMenuCode = `
 	</style>
 
 	<div class="shizoval__content">
-		<center>Assistant v0.2</center><hr style="height:2px;border-width:0;color:white;background-color:white">
+		<center>exq clicker</center><hr style="height:2px;border-width:0;color:white;background-color:white">
 
 
 		<div id="gameStates" style="display: none;">

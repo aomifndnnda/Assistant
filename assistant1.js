@@ -786,7 +786,7 @@ let cheatMenuCode = `
 
         .shizoval__content {
             padding: 15px;
-            background: "rgb(12 12 12 / 28%)";
+            background: "red";
             backdrop-filter: blur(15px);
             box-shadow: 5 5px 15px black;
             font-family: 'Roboto', sans-serif;
@@ -794,7 +794,7 @@ let cheatMenuCode = `
             font-size: 1rem;
             font-weight: 750;
             border-radius: 20px;
-            outline: 3px solid black;
+            outline: 5px solid black;
         }
 	</style>
 
@@ -810,8 +810,7 @@ let cheatMenuCode = `
 		</div>
 
 		<div id="infoWindow">
-			<p>Press Num5 To Toggle UI</p>
-            <p><center><font id="nig" color="black">Made By Akz</center></font></p>
+            <p><center><font id="nig" color="black">Clicker</center></font></p>
 		</div>
 
 	</div>

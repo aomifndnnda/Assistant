@@ -284,16 +284,16 @@ if (KeyPressing.isKeyPressed(87 /*key: W*/) && commons.getChatState()==null && g
 
         
             
-            game.getTankPhysics().body.state.position.x += TPspeed;
-            game.getTankPhysics().body.state.position.y += TPspeed;
+            game.getTankPhysics().body.state.position.x += TPspeed * Math.sin(-game.getCamera().direction);
+            game.getTankPhysics().body.state.position.y += TPspeed * Math.cos(-game.getCamera().direction);
         
     }
 
     if (KeyPressing.isKeyPressed(83 /*key: S*/) && commons.getChatState()==null)
     {
         
-        game.getTankPhysics().body.state.position.x -= TPspeed;
-            game.getTankPhysics().body.state.position.y -= TPspeed;
+        game.getTankPhysics().body.state.position.x -= TPspeed * Math.sin(-game.getCamera().direction);
+            game.getTankPhysics().body.state.position.y -= TPspeed * Math.cos(-game.getCamera().direction);
     }
 
     if (KeyPressing.isKeyPressed(65 /*key: A*/) && commons.getChatState()==null)
@@ -303,8 +303,8 @@ if (KeyPressing.isKeyPressed(87 /*key: W*/) && commons.getChatState()==null && g
        
            
 
-            game.getTankPhysics().body.state.position.x -= TPspeed;
-            game.getTankPhysics().body.state.position.y -= TPspeed;
+            game.getTankPhysics().body.state.position.x -= TPspeed * Math.sin(-(game.getCamera().direction - Math.PI / 2));
+            game.getTankPhysics().body.state.position.y -= TPspeed * Math.cos(-(game.getCamera().direction - Math.PI / 2));
         
     }
 
@@ -313,8 +313,8 @@ if (KeyPressing.isKeyPressed(87 /*key: W*/) && commons.getChatState()==null && g
         
 
        
-            game.getTankPhysics().body.state.position.x +=TPspeed;
-            game.getTankPhysics().body.state.position.y += TPspeed;
+            game.getTankPhysics().body.state.position.x +=TPspeed * Math.sin(-(game.getCamera().direction - Math.PI / 2));
+            game.getTankPhysics().body.state.position.y += TPspeed * Math.cos(-(game.getCamera().direction - Math.PI / 2));
         
     }
    

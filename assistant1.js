@@ -712,7 +712,7 @@ game.getWorld().physicsScene_0.gravity.z  = 0
 }
 
 function nt(){try {
-game.getTankPhysics().body.state.orientation.x = 1;
+game.getTankPhysics().body.state.orientation.x = 0;
     game.getTankPhysics().body.state.orientation.y = 0;
    game.getTankPhysics().body.state.angularVelocity.y= 0
     game.getTankPhysics().body.state.angularVelocity.x = 0; 

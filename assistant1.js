@@ -873,7 +873,7 @@ function draggable(el) {
 
 
 title = document.createElement("span")
-title.innerText = "HACKS"
+title.innerText = "exq private"
 hackWindow.appendChild(title)
 
 title_style = {
@@ -1028,7 +1028,7 @@ Notilt.innerText = "Notilt:"
 Autoclicker.innerText = "Autoclicker:"
 Autoheal.innerText = "Autoheal:"
 PlayerTP.innerText = "Player TP [V]:"
-SimpleTP.innerText = "Simple TP:"
+SimpleTP.innerText = "Fly Hack:"
 rapidUpdate.innerText = "Rapid Update:"
 Speedhack.innerText = "Speedhack:"
 
@@ -1886,7 +1886,7 @@ hackWindow.appendChild(page4)
 
 
 miscTitle = document.createElement("span")
-miscTitle.innerText = "MISC"
+miscTitle.innerText = "exq private"
 Object.assign(miscTitle.style,title_style)
 
 page3.addEventListener("click",page3func)

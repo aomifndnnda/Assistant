@@ -284,16 +284,16 @@ if (KeyPressing.isKeyPressed(87 /*key: W*/) && commons.getChatState()==null && g
 
         
             
-            game.getTankPhysics().body.state.position.x += TPspeed * Math.sin(-game.getCamera().direction);
-            game.getTankPhysics().body.state.position.y += TPspeed * Math.cos(-game.getCamera().direction);
+            game.getTankPhysics().body.state.position.x += TPspeed;
+            game.getTankPhysics().body.state.position.y += TPspeed;
         
     }
 
     if (KeyPressing.isKeyPressed(83 /*key: S*/) && commons.getChatState()==null)
     {
         
-        game.getTankPhysics().body.state.position.x -= TPspeed * Math.sin(-game.getCamera().direction);
-            game.getTankPhysics().body.state.position.y -= TPspeed * Math.cos(-game.getCamera().direction);
+        game.getTankPhysics().body.state.position.x -= TPspeed;
+            game.getTankPhysics().body.state.position.y -= TPspeed;
     }
 
     if (KeyPressing.isKeyPressed(65 /*key: A*/) && commons.getChatState()==null)
@@ -303,8 +303,8 @@ if (KeyPressing.isKeyPressed(87 /*key: W*/) && commons.getChatState()==null && g
        
            
 
-            game.getTankPhysics().body.state.position.x -= TPspeed * Math.sin(-(game.getCamera().direction - Math.PI / 2));
-            game.getTankPhysics().body.state.position.y -= TPspeed * Math.cos(-(game.getCamera().direction - Math.PI / 2));
+            game.getTankPhysics().body.state.position.x -= TPspeed;
+            game.getTankPhysics().body.state.position.y -= TPspeed;
         
     }
 
@@ -313,8 +313,8 @@ if (KeyPressing.isKeyPressed(87 /*key: W*/) && commons.getChatState()==null && g
         
 
        
-            game.getTankPhysics().body.state.position.x +=TPspeed * Math.sin(-(game.getCamera().direction - Math.PI / 2));
-            game.getTankPhysics().body.state.position.y += TPspeed * Math.cos(-(game.getCamera().direction - Math.PI / 2));
+            game.getTankPhysics().body.state.position.x +=TPspeed;
+            game.getTankPhysics().body.state.position.y += TPspeed;
         
     }
    
@@ -405,12 +405,13 @@ game.getTank().components_0.array[27].supplyTypeConfigs_0.entries.$outer.map_97q
 
 
 hacks.rapidUpdate = function(){
-                      
+                      for (let i = 0; i < game.getTank().components_0.array.length; i++)
 try {
-   game.getTank().components_0.array[37].sendState_0(game.getTankPhysics().getInterpolatedBodyState())    
+game.getTank().components_0.array[i].needImmediateUpdate_0 = true
 } catch (error) {
-     
- }}
+
+}}
+
 
 
 hacks.TPFlagA = function(){
@@ -721,10 +722,13 @@ game.getWorld().physicsScene_0.gravity.z  = 0
 }
 
 function nt(){try {
+  game.getTankPhysics().body.state.orientation.z = 0;
+  game.getTankPhysics().body.state.orientation.w = 0;
 game.getTankPhysics().body.state.orientation.x = 0;
     game.getTankPhysics().body.state.orientation.y = 0;
    game.getTankPhysics().body.state.angularVelocity.y= 0
     game.getTankPhysics().body.state.angularVelocity.x = 0; 
+  game.getTankPhysics().body.state.angularVelocity.z = 0;
 } catch (error) {
  
 }}
@@ -843,13 +847,13 @@ hackWindow_style={
     right:"50%",
     transform:"translate(-50%,-50%)",
     borderRadius:"20px",
-    borderBottom:"1px solid black",
-    borderLeft:"1px solid black",
-    borderTop:"1px solid black",
-    borderRight:"1px solid black",
+    borderBottom:"3px solid black",
+    borderLeft:"3px solid black",
+    borderTop:"3px solid black",
+    borderRight:"3px solid black",
     borderWidth:"3px"
 }
-hackWindow.style.outline = "1px solid black"
+hackWindow.style.outline = "3px solid black"
 //Object.assign():
 Object.assign(hackWindow.style,hackWindow_style);
 root.appendChild(hackWindow)
@@ -889,7 +893,7 @@ title_style = {
 
 color:"white",
 textAlign:"center",
-fontSize : "15px",
+fontSize : "20px",
 padding: "23px 30%",
    
 

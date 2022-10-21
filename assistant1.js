@@ -1106,7 +1106,7 @@ game.getWorld().triggers_0.triggers_0.array[key].removeMine_0()
 
 
 
-pressCount = 0
+WpressCount = 0
 document.addEventListener('keydown', (e) => { if (e.keyCode === 45 && game.isNotOpenChat()){
 WpressCount ++
 if(WpressCount%2==1){

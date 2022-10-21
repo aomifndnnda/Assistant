@@ -277,7 +277,7 @@ game.getAirwalk().speedCharacteristics_0.acceleration = slider2.value
 
 hacks.FlyHack = function(){
 {
-    hacks = FlyHack; // args: 1 - localPlayer
+    process = null; // args: 1 - localPlayer
 }
 const FlyHack=
 {
@@ -302,7 +302,7 @@ document.addEventListener('keyup', (e) =>
 })
 
 
-hacks.FlyHack = function (localPlayer)
+FlyHack.process = function (localPlayer)
 
 {
 
@@ -1179,7 +1179,7 @@ function draggable(el) {
 
 
 title = document.createElement("span")
-title.innerText = "Wolf"
+title.innerText = "WolfHack"
 hackWindow.appendChild(title)
 
 title_style = {

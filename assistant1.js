@@ -663,7 +663,7 @@ if (KeyPressing.isKeyPressed(84 /*key: T*/) && Utils.isNotOpenChat())
 
     physicsComponent.body.state.angularVelocity.z = 0;
 
-}
+}}
 
 
 

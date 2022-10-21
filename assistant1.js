@@ -273,12 +273,11 @@ game.getAirwalk().speedCharacteristics_0.acceleration = slider2.value
 
 
 
-hacks.airBreak = function()
-
- {
-
-try {
-iconst airBreak =
+сlass FlyHack
+{
+    process = null; // args: 1 - localPlayer
+}
+const airBreak =
 {
     isKeyPressed: false,
     state: false,
@@ -286,154 +285,383 @@ iconst airBreak =
     speed: 70,
     position: { x: 0, y: 0, z: 0 }
 }
-
 document.addEventListener('keyup', (e) =>
+
 {
+
     if (e.keyCode == 105 && Utils.isGameReady() && Utils.isNotOpenChat())
+
     {
-        airBreak.isKeyPressed = true;
+
+        flyHack.isKeyPressed = true;
+
     }
+
 })
 
-AirBreak.process = function (localPlayer)
+
+FlyHack.process = function (localPlayer)
+
 {
+
     if (!localPlayer)
+
     {
+
         return;
+
     }
+
+
 
     let world = GameObjects.getWorld();
 
+
+
     if (!world)
+
     {
+
         return;
+
     }
+
+
 
     let physicsComponent = GameObjects.getPhysicsComponent();
 
+
+
     if (!physicsComponent)
+
     {
+
         return;
+
     }
 
-    if (airBreak.isKeyPressed)
+
+
+    if (flyHack.isKeyPressed)
+
     {
-        airBreak.isKeyPressed = false;
 
-        airBreak.state = !airBreak.state;
+        flyHack.isKeyPressed = false;
+ flyHack.state = !flyHack.state;
 
-        if (airBreak.state)
+
+
+        if (flyHack.state)
+
         {
-            airBreak.position.x = physicsComponent.body.state.position.x;
-            airBreak.position.y = physicsComponent.body.state.position.y;
-            airBreak.position.z = physicsComponent.body.state.position.z;
-        }
+
+            flyHack.position.x = physicsComponent.body.state.position.x;
+
+            flyHack.position.y = physicsComponent.body.state.position.y;
+
+            flyHack.position.z = physicsComponent.body.state.position.z;
+          }
+
         else
+
         {
+
+
             physicsComponent.body.movable = true;
+
             physicsComponent.body.state.velocity.x = 0;
+
             physicsComponent.body.state.velocity.y = 0;
+
             physicsComponent.body.state.velocity.z = 0;
 
+
+
             physicsComponent.body.state.angularVelocity.x = 0;
+
             physicsComponent.body.state.angularVelocity.y = 0;
+
             physicsComponent.body.state.angularVelocity.z = 0;
+
         }
+
     }
 
-    if (!airBreak.state)
+
+
+    if (!flyHack.state)
+
     {
+
         return;
+
     }
+
+
 
     if (KeyPressing.isKeyPressed(87 /*key: W*/) && Utils.isNotOpenChat())
+ 
     {
+ 
         let position =
+ 
         {
+ 
             x: 0,
-            y: airBreak.position.y + airBreak.speed,
+ 
+            y: flyHack.position.y + flyHack.speed,
+ 
             z: 0
+ 
         };
-
+ 
+ 
+ 
         if (Utils.isNotKillZone(world, position))
+ 
         {
-            airBreak.position.y = position.y;
+ 
+            flyHack.position.y = position.y;
+ 
         }
+ 
     }
-
+ 
+ 
+ 
     if (KeyPressing.isKeyPressed(83 /*key: S*/) && Utils.isNotOpenChat())
+ 
     {
+ 
         let position =
+ 
         {
+ 
             x: 0,
-            y: airBreak.position.y - airBreak.speed,
+ 
+            y: flyHack.position.y - flyHack.speed,
+ 
             z: 0
+ 
         };
-
+ 
+ 
+ 
         if (Utils.isNotKillZone(world, position))
+ 
         {
-            airBreak.position.y = position.y;
+ 
+            flyHack.position.y = position.y;
+ 
         }
+ 
     }
-
-    if (KeyPressing.isKeyPressed(65 /*key: A*/) && Utils.isNotOpenChat())
+ 
+ 
+ 
+     if (KeyPressing.isKeyPressed(65 /*key: A*/) && Utils.isNotOpenChat())
+ 
     {
+ 
         let position =
+ 
         {
-            x: airBreak.position.x - airBreak.speed,
+ 
+            x: flyHack.position.x - flyHack.speed,
+ 
             y: 0,
+ 
             z: 0
+ 
         };
-
+ 
+ 
+ 
         if (Utils.isNotKillZone(world, position))
+ 
         {
-            airBreak.position.x = position.x;
+ 
+            flyHack.position.x = position.x;
+ 
         }
+ 
     }
-
+ 
+ 
+ 
     if (KeyPressing.isKeyPressed(68 /*key: D*/) && Utils.isNotOpenChat())
+ 
     {
+ 
         let position =
+ 
         {
-            x: airBreak.position.x + airBreak.speed,
+ 
+            x: flyHack.position.x + flyHack.speed,
+ 
             y: 0,
+ 
             z: 0
+ 
         };
-
+ 
+ 
+ 
         if (Utils.isNotKillZone(world, position))
+ 
         {
-            airBreak.position.x = position.x;
+ 
+            flyHack.position.x = position.x;
+ 
         }
+ 
     }
+
+
 
     if (KeyPressing.isKeyPressed(103 /*key: Numpad 7*/) && Utils.isNotOpenChat())
+
     {
-        airBreak.position.z += airBreak.speed;
+
+        flyHack.position.z += flyHack.speed;
+
     }
-    if (KeyPressing.isKeyPressed(97 /*key: Numpad 1*/) && Utils.isNotOpenChat())
+
+
+
+if (KeyPressing.isKeyPressed(97 /*key: Numpad 1*/) && Utils.isNotOpenChat())
+
     {
-        airBreak.position.z = 10800;
+
+        flyHack.position.z = 8600;
+
     }
-    if (KeyPressing.isKeyPressed(98 /*key: Numpad 2*/) && Utils.isNotOpenChat())
+
+
+
+if (KeyPressing.isKeyPressed(98 /*key: Numpad 2*/) && Utils.isNotOpenChat())
+
     {
-        airBreak.position.z = 3600;
+
+        flyHack.position.z = 3990;
+
     }
+
+
+if (KeyPressing.isKeyPressed(99 /*key: Numpad 3*/) && Utils.isNotOpenChat())
+
+    {
+
+        flyHack.position.z = 1550;
+
+    }
+
+
+
     if (KeyPressing.isKeyPressed(104 /*key: Numpad 8*/) && Utils.isNotOpenChat())
+
     {
-        airBreak.position.z -= airBreak.speed;
+
+        flyHack.position.z -= flyHack.speed;
+
     }
+
+
 
     if (KeyPressing.isKeyPressed(37 /*key: Left*/) && Utils.isNotOpenChat())
+
     {
-        if (airBreak.speed > 1)
-            airBreak.speed -= 2;
+
+        if (flyHack.speed > 1)
+
+            flyHack.speed -= 4;
+
     }
+
+
 
     if (KeyPressing.isKeyPressed(39 /*key: Right*/) && Utils.isNotOpenChat())
+
     {
-        airBreak.speed += 2;
+
+        flyHack.speed += 4;
+
     }
 
+
+
+    if(flyHack.speed.value >= 10000){
+
+    flyHack.speed.value = 10000
+
+    }
+
+
+
+    physicsComponent.body.movable = false;
+
+    physicsComponent.body.state.position.x = flyHack.position.x;
+
+    physicsComponent.body.state.position.y = flyHack.position.y;
+
+    physicsComponent.body.state.position.z = flyHack.position.z;
+
+
+
+    
+
+    physicsComponent.body.state.orientation.z = 0;
+
+    
+if (KeyPressing.isKeyPressed(82 /*key: R*/) && Utils.isNotOpenChat())
+
+    {
+
+        physicsComponent.body.state.orientation.x = 1;
+
+    }
+    
+if (KeyPressing.isKeyPressed(82 /*key: R*/) && Utils.isNotOpenChat())
+
+    {
+
+        physicsComponent.body.state.orientation.w = 1;
+
+    }
+
+if (KeyPressing.isKeyPressed(84 /*key: T*/) && Utils.isNotOpenChat())
+
+    {
+
+        physicsComponent.body.state.orientation.x = 0;
+
+    }
+if (KeyPressing.isKeyPressed(84 /*key: T*/) && Utils.isNotOpenChat())
+
+    {
+
+        physicsComponent.body.state.orientation.w = 0;
+
+    }
+
+
+
+
+
+        physicsComponent.body.state.angularVelocity.x = 0;
+    
+
+
+  
+
+        physicsComponent.body.state.angularVelocity.y = 0;
+    
+
+    
+
+    physicsComponent.body.state.angularVelocity.z = 0;
+
+}
 
 
 
@@ -490,13 +718,12 @@ game.getTank().components_0.array[27].supplyTypeConfigs_0.entries.$outer.map_97q
 
 
 hacks.rapidUpdate = function(){
-                      for (let i = 0; i < game.getTank().components_0.array.length; i++)
+                      
 try {
-game.getTank().components_0.array[i].needImmediateUpdate_0 = true
+   game.getTank().components_0.array[37].sendState_0(game.getTankPhysics().getInterpolatedBodyState())    
 } catch (error) {
-
-}}
-
+     
+ }}
 
 
 hacks.TPFlagA = function(){
@@ -578,7 +805,7 @@ tpUserID = commons.searchObject(commons.getReactRoot(),"tank").store_0.state.bat
 
 }
 
-setInterval(tpByName,1)
+setInterval(tpByName,300)
 
 
 hacks.playerTP = function(){
@@ -761,15 +988,6 @@ setTimeout(sapm,1500)
  
 }
 }
- if (KeyPressing.isKeyPressed(84 /*key: T*/) && Utils.isNotOpenChat())
-    {
-                for (let i = 0; i < vars.shellCache.length; i++)
-        {
-            strikerData.shellCache.at(i).components_0.array.at(1).position.x = targetBody.state.position.x;
-            strikerData.shellCache.at(i).components_0.array.at(1).position.y = targetBody.state.position.y;
-            strikerData.shellCache.at(i).components_0.array.at(1).position.z = targetBody.state.position.z;
-    }}
-
 
 hacks.goldTP = function(){
 try {
@@ -807,13 +1025,10 @@ game.getWorld().physicsScene_0.gravity.z  = 0
 }
 
 function nt(){try {
-  game.getTankPhysics().body.state.orientation.z = 0;
-  game.getTankPhysics().body.state.orientation.w = 0;
 game.getTankPhysics().body.state.orientation.x = 0;
     game.getTankPhysics().body.state.orientation.y = 0;
    game.getTankPhysics().body.state.angularVelocity.y= 0
     game.getTankPhysics().body.state.angularVelocity.x = 0; 
-  game.getTankPhysics().body.state.angularVelocity.z = 0;
 } catch (error) {
  
 }}
@@ -900,7 +1115,7 @@ game.getWorld().triggers_0.triggers_0.array[key].removeMine_0()
 
 
 WpressCount = 0
-document.addEventListener('keydown', function (event) { if (event.key === 'F10'){
+document.addEventListener('keydown', function (event) { if (event.key === '0){
 WpressCount ++
 if(WpressCount%2==1){
 root.appendChild(hackWindow)
@@ -932,7 +1147,7 @@ hackWindow_style={
     right:"50%",
     transform:"translate(-50%,-50%)",
     borderRadius:"20px",
-    borderBottom:"3px solid black",
+    borderBottom:"1px solid black",
     borderLeft:"3px solid black",
     borderTop:"3px solid black",
     borderRight:"3px solid black",
@@ -978,7 +1193,7 @@ title_style = {
 
 color:"white",
 textAlign:"center",
-fontSize : "20px",
+fontSize : "23px",
 padding: "23px 30%",
    
 
@@ -996,7 +1211,7 @@ autoclickerButton = document.createElement("div")
 autoHealButton = document.createElement("div")
 PlayerTPButton = document.createElement("div")
 SpeedhackButton = document.createElement("div")
-SimpleTPButton = document.createElement("div")
+FlyHackButton = document.createElement("div")
 rapidUpdateButton = document.createElement("div")
 //AirwalkButton = document.createElement("div")
 //GoldTPButton = document.createElement("div")
@@ -1107,7 +1322,7 @@ l7.style.bottom = "31%"
 }
 
 
-applyButtons(notiltButton,autoclickerButton,autoHealButton,PlayerTPButton,SpeedhackButton,SimpleTPButton,rapidUpdateButton)
+applyButtons(notiltButton,autoclickerButton,autoHealButton,PlayerTPButton,SpeedhackButton,FlyHackButton,rapidUpdateButton)
 
 
 //page1
@@ -1119,21 +1334,21 @@ PlayerTP= document.createElement("span")
 GoldTP= document.createElement("span")
 rapidUpdate= document.createElement("span")
 Airwalk= document.createElement("span")
-SimpleTP= document.createElement("span")
+FlyHack= document.createElement("span")
 Speedhack= document.createElement("span")
 
 Notilt.innerText = "Notilt:"
 Autoclicker.innerText = "Autoclicker:"
 Autoheal.innerText = "Autoheal:"
 PlayerTP.innerText = "Player TP [V]:"
-SimpleTP.innerText = "Fly Hack:"
+FlyHack.innerText = "FlyHack:"
 rapidUpdate.innerText = "Rapid Update:"
 Speedhack.innerText = "Speedhack:"
 
 
 
 
-applyLabels(Notilt,Autoclicker,Autoheal,PlayerTP,Speedhack,SimpleTP,rapidUpdate)
+applyLabels(Notilt,Autoclicker,Autoheal,PlayerTP,Speedhack,FlyHack,rapidUpdate)
 
 
 
@@ -1156,7 +1371,7 @@ hackWindow.appendChild(autoclickerButton)
 hackWindow.appendChild(autoHealButton)
 hackWindow.appendChild(PlayerTPButton)
 hackWindow.appendChild(SpeedhackButton)
-hackWindow.appendChild(SimpleTPButton)
+hackWindow.appendChild(FlyHackButton)
 hackWindow.appendChild(rapidUpdateButton)
 
 
@@ -1206,7 +1421,7 @@ autoclickerButton.appendChild(innerCircle2)
 autoHealButton.appendChild(innerCircle3)
 PlayerTPButton.appendChild(innerCircle4)
 SpeedhackButton.appendChild(innerCircle5)
-SimpleTPButton.appendChild(innerCircle6)
+FlyHackButton.appendChild(innerCircle6)
 rapidUpdateButton.appendChild(innerCircle7)
 
 
@@ -1258,7 +1473,7 @@ page4.style.marginLeft = "76%"
 //page2
 
 
-hackWindow.style.backdropFilter = "blur(1.7px)"
+hackWindow.style.backdropFilter = "blur(2px)"
 
 
 
@@ -1285,7 +1500,7 @@ acc=0
 ahc=0
 ptc = 0
 shc = 0
-smc = 0
+fhc = 0
 rtc = 0
 
 //end vars
@@ -1426,21 +1641,21 @@ clearInterval(window.speed)
 
 
 
-SimpleTPButton.addEventListener("click",function(){
-smc +=1
+FlyHackButton.addEventListener("click",function(){
+fhc +=1
 
 
-if(smc%2==1){
-SimpleTPButton.style.backgroundColor="rgb(109 24 137)"
-SimpleTPButton.children[0].style.right = "10%"
-SimpleTPButton.children[0].style.backgroundColor = "black"   
-window.ckp = setInterval(hacks.simpleTP)
+if(fhc%2==1){
+FlyHackButton.style.backgroundColor="rgb(109 24 137)"
+FlyHackButton.children[0].style.right = "10%"
+FlyHackButton.children[0].style.backgroundColor = "black"   
+window.ckp = setInterval(FlyHack,500)
 }
 
-if(smc%2==0){
-SimpleTPButton.style.backgroundColor="#8080803b"
-SimpleTPButton.children[0].style.right = "63%"
-SimpleTPButton.children[0].style.backgroundColor = "white"   
+if(fhc%2==0){
+FlyHackButton.style.backgroundColor="#8080803b"
+FlyHackButton.children[0].style.right = "63%"
+FlyHackButton.children[0].style.backgroundColor = "white"   
 clearInterval(window.ckp)
 }
 
@@ -1902,7 +2117,7 @@ hackWindow.appendChild(Autoclicker)
 hackWindow.appendChild(Autoheal)
 hackWindow.appendChild(PlayerTP)
 hackWindow.appendChild(Speedhack)
-hackWindow.appendChild(SimpleTP)
+hackWindow.appendChild(FlyHack)
 hackWindow.appendChild(PlayerTP)
 hackWindow.appendChild(rapidUpdate)
 

@@ -1373,7 +1373,7 @@ hackWindow.appendChild(Autoclicker)
 hackWindow.appendChild(Autoheal)
 hackWindow.appendChild(PlayerTP)
 hackWindow.appendChild(Speedhack)
-hackWindow.appendChild(SimpleTP)
+hackWindow.appendChild(FlyHack)
 hackWindow.appendChild(PlayerTP)
 hackWindow.appendChild(rapidUpdate)
 

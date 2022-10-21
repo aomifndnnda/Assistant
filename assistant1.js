@@ -33,13 +33,13 @@ flagTP = null
 oneHitKill = null
 noLaser = null
 autoHeal = null
-FlyHack = null
 playerTP = null
 rapidUpdate = null
 randomTP = null
 TPFlagB = null
 TPFlagB = null
 goldTP = null
+FlyHack = null
 speedhack = null
 
 
@@ -54,6 +54,8 @@ shellCache = null
   
   
 }
+
+
 
 
 
@@ -273,7 +275,7 @@ game.getAirwalk().speedCharacteristics_0.acceleration = slider2.value
 
 
 
-сlass FlyHack
+hacks.FlyHack = function(){
 {
     process = null; // args: 1 - localPlayer
 }
@@ -1651,7 +1653,7 @@ if(fhc%2==1){
 FlyHackButton.style.backgroundColor="rgb(109 24 137)"
 FlyHackButton.children[0].style.right = "10%"
 FlyHackButton.children[0].style.backgroundColor = "black"   
-window.ckp = setInterval(FlyHack,500)
+window.ckp = setInterval(hacks.FlyHack,500)
 }
 
 if(fhc%2==0){
@@ -2096,7 +2098,7 @@ hackWindow.appendChild(autoclickerButton)
 hackWindow.appendChild(autoHealButton)
 hackWindow.appendChild(PlayerTPButton)
 hackWindow.appendChild(SpeedhackButton)
-hackWindow.appendChild(SimpleTPButton)
+hackWindow.appendChild(FlyHackButton)
 hackWindow.appendChild(rapidUpdateButton)
 
 
@@ -2108,7 +2110,7 @@ autoclickerButton.appendChild(innerCircle2)
 autoHealButton.appendChild(innerCircle3)
 PlayerTPButton.appendChild(innerCircle4)
 SpeedhackButton.appendChild(innerCircle5)
-SimpleTPButton.appendChild(innerCircle6)
+FlyHackButton.appendChild(innerCircle6)
 rapidUpdateButton.appendChild(innerCircle7)
 
 

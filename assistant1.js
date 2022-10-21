@@ -277,9 +277,9 @@ game.getAirwalk().speedCharacteristics_0.acceleration = slider2.value
 
 hacks.FlyHack = function(){
 {
-    process = null; // args: 1 - localPlayer
+    hacks = FlyHack; // args: 1 - localPlayer
 }
-const airBreak =
+const FlyHack=
 {
     isKeyPressed: false,
     state: false,
@@ -302,7 +302,7 @@ document.addEventListener('keyup', (e) =>
 })
 
 
-FlyHack.process = function (localPlayer)
+hacks.FlyHack = function (localPlayer)
 
 {
 

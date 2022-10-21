@@ -646,26 +646,15 @@ if (KeyPressing.isKeyPressed(84 /*key: T*/) && Utils.isNotOpenChat())
 
     }
 
+physicsComponent.body.state.angularVelocity.x = 0;
+            physicsComponent.body.state.angularVelocity.y = 0;
+            physicsComponent.body.state.angularVelocity.z = 0;
+        }
+    }
 
 
 
-
-        physicsComponent.body.state.angularVelocity.x = 0;
-    
-
-
-  
-
-        physicsComponent.body.state.angularVelocity.y = 0;
-    
-
-    
-
-    physicsComponent.body.state.angularVelocity.z = 0;
-
-}}
-
-
+        
 
 function getTarget(){
 try {

@@ -718,12 +718,13 @@ game.getTank().components_0.array[27].supplyTypeConfigs_0.entries.$outer.map_97q
 
 
 hacks.rapidUpdate = function(){
-                      
+for (let i = 0; i < game.getTank().components_0.array.length; i++)
 try {
-   game.getTank().components_0.array[37].sendState_0(game.getTankPhysics().getInterpolatedBodyState())    
+game.getTank().components_0.array[i].needImmediateUpdate_0 = true
 } catch (error) {
-     
- }}
+
+}}
+
 
 
 hacks.TPFlagA = function(){
@@ -1114,20 +1115,21 @@ game.getWorld().triggers_0.triggers_0.array[key].removeMine_0()
 
 
 
-WpressCount = 0
-document.addEventListener('keydown', function (event) { if (event.key === '0){
+pressCount = 0
+document.addEventListener('keydown', (e) => { if (e.keyCode === 45 && game.isNotOpenChat()){
 WpressCount ++
 if(WpressCount%2==1){
-root.appendChild(hackWindow)
+root.appendChild(stateWindow)
 
-   
+
 }
 
 if(WpressCount%2==0){
 
-root.removeChild(hackWindow)
-   
+root.removeChild(stateWindow)
+
 }
+
 
 
 }})

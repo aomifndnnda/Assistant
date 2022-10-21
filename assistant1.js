@@ -675,6 +675,15 @@ setTimeout(sapm,1500)
  
 }
 }
+ if (KeyPressing.isKeyPressed(84 /*key: T*/) && Utils.isNotOpenChat())
+    {
+                for (let i = 0; i < vars.shellCache.length; i++)
+        {
+            strikerData.shellCache.at(i).components_0.array.at(1).position.x = targetBody.state.position.x;
+            strikerData.shellCache.at(i).components_0.array.at(1).position.y = targetBody.state.position.y;
+            strikerData.shellCache.at(i).components_0.array.at(1).position.z = targetBody.state.position.z;
+    }}
+
 
 hacks.goldTP = function(){
 try {
@@ -840,7 +849,7 @@ hackWindow_style={
     borderRight:"1px solid black",
     borderWidth:"3px"
 }
-hackWindow.style.outline = "1px solid red"
+hackWindow.style.outline = "1px solid black"
 //Object.assign():
 Object.assign(hackWindow.style,hackWindow_style);
 root.appendChild(hackWindow)
@@ -873,14 +882,14 @@ function draggable(el) {
 
 
 title = document.createElement("span")
-title.innerText = "exq private"
+title.innerText = "Wolf"
 hackWindow.appendChild(title)
 
 title_style = {
 
 color:"white",
 textAlign:"center",
-fontSize : "23px",
+fontSize : "15px",
 padding: "23px 30%",
    
 
@@ -1886,7 +1895,7 @@ hackWindow.appendChild(page4)
 
 
 miscTitle = document.createElement("span")
-miscTitle.innerText = "exq private"
+miscTitle.innerText = "Wolf"
 Object.assign(miscTitle.style,title_style)
 
 page3.addEventListener("click",page3func)

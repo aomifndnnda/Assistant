@@ -273,83 +273,168 @@ game.getAirwalk().speedCharacteristics_0.acceleration = slider2.value
 
 
 
-hacks.simpleTP = function()
+hacks.airBreak = function()
 
  {
 
 try {
-if (KeyPressing.isKeyPressed(87 /*key: W*/) && commons.getChatState()==null && game.getTankPhysics().body.state.position.x != game.getMapBoundary().maxX )
-    {
-       
-
-        
-            
-            game.getTankPhysics().body.state.position.x += TPspeed;
-            game.getTankPhysics().body.state.position.y += TPspeed;
-        
-    }
-
-    if (KeyPressing.isKeyPressed(83 /*key: S*/) && commons.getChatState()==null)
-    {
-        
-        game.getTankPhysics().body.state.position.x -= TPspeed;
-            game.getTankPhysics().body.state.position.y -= TPspeed;
-    }
-
-    if (KeyPressing.isKeyPressed(65 /*key: A*/) && commons.getChatState()==null)
-    {
-        
-
-       
-           
-
-            game.getTankPhysics().body.state.position.x -= TPspeed;
-            game.getTankPhysics().body.state.position.y -= TPspeed;
-        
-    }
-
-    if (KeyPressing.isKeyPressed(68 /*key: D*/) && commons.getChatState()==null)
-    {
-        
-
-       
-            game.getTankPhysics().body.state.position.x +=TPspeed;
-            game.getTankPhysics().body.state.position.y += TPspeed;
-        
-    }
-   
-   if (KeyPressing.isKeyPressed(103 /*key: Numpad7*/) && commons.getChatState()==null)
-    {
-        
-
-       
-            game.getTankPhysics().body.state.position.z+=80
-        
-    }
-
-   
-   if (KeyPressing.isKeyPressed(104 /*key: Numpad8*/) && commons.getChatState()==null)
-    {
-        
-
-       
-            game.getTankPhysics().body.state.position.z-=80
-        
-    }
-   
-   
-   
-   
-    
-} catch (error) {
- 
+iconst airBreak =
+{
+    isKeyPressed: false,
+    state: false,
+    antiAim: false,
+    speed: 70,
+    position: { x: 0, y: 0, z: 0 }
 }
- 
- 
- 
- 
 
-}
+document.addEventListener('keyup', (e) =>
+{
+    if (e.keyCode == 105 && Utils.isGameReady() && Utils.isNotOpenChat())
+    {
+        airBreak.isKeyPressed = true;
+    }
+})
+
+AirBreak.process = function (localPlayer)
+{
+    if (!localPlayer)
+    {
+        return;
+    }
+
+    let world = GameObjects.getWorld();
+
+    if (!world)
+    {
+        return;
+    }
+
+    let physicsComponent = GameObjects.getPhysicsComponent();
+
+    if (!physicsComponent)
+    {
+        return;
+    }
+
+    if (airBreak.isKeyPressed)
+    {
+        airBreak.isKeyPressed = false;
+
+        airBreak.state = !airBreak.state;
+
+        if (airBreak.state)
+        {
+            airBreak.position.x = physicsComponent.body.state.position.x;
+            airBreak.position.y = physicsComponent.body.state.position.y;
+            airBreak.position.z = physicsComponent.body.state.position.z;
+        }
+        else
+        {
+            physicsComponent.body.movable = true;
+            physicsComponent.body.state.velocity.x = 0;
+            physicsComponent.body.state.velocity.y = 0;
+            physicsComponent.body.state.velocity.z = 0;
+
+            physicsComponent.body.state.angularVelocity.x = 0;
+            physicsComponent.body.state.angularVelocity.y = 0;
+            physicsComponent.body.state.angularVelocity.z = 0;
+        }
+    }
+
+    if (!airBreak.state)
+    {
+        return;
+    }
+
+    if (KeyPressing.isKeyPressed(87 /*key: W*/) && Utils.isNotOpenChat())
+    {
+        let position =
+        {
+            x: 0,
+            y: airBreak.position.y + airBreak.speed,
+            z: 0
+        };
+
+        if (Utils.isNotKillZone(world, position))
+        {
+            airBreak.position.y = position.y;
+        }
+    }
+
+    if (KeyPressing.isKeyPressed(83 /*key: S*/) && Utils.isNotOpenChat())
+    {
+        let position =
+        {
+            x: 0,
+            y: airBreak.position.y - airBreak.speed,
+            z: 0
+        };
+
+        if (Utils.isNotKillZone(world, position))
+        {
+            airBreak.position.y = position.y;
+        }
+    }
+
+    if (KeyPressing.isKeyPressed(65 /*key: A*/) && Utils.isNotOpenChat())
+    {
+        let position =
+        {
+            x: airBreak.position.x - airBreak.speed,
+            y: 0,
+            z: 0
+        };
+
+        if (Utils.isNotKillZone(world, position))
+        {
+            airBreak.position.x = position.x;
+        }
+    }
+
+    if (KeyPressing.isKeyPressed(68 /*key: D*/) && Utils.isNotOpenChat())
+    {
+        let position =
+        {
+            x: airBreak.position.x + airBreak.speed,
+            y: 0,
+            z: 0
+        };
+
+        if (Utils.isNotKillZone(world, position))
+        {
+            airBreak.position.x = position.x;
+        }
+    }
+
+    if (KeyPressing.isKeyPressed(103 /*key: Numpad 7*/) && Utils.isNotOpenChat())
+    {
+        airBreak.position.z += airBreak.speed;
+    }
+    if (KeyPressing.isKeyPressed(97 /*key: Numpad 1*/) && Utils.isNotOpenChat())
+    {
+        airBreak.position.z = 10800;
+    }
+    if (KeyPressing.isKeyPressed(98 /*key: Numpad 2*/) && Utils.isNotOpenChat())
+    {
+        airBreak.position.z = 3600;
+    }
+    if (KeyPressing.isKeyPressed(104 /*key: Numpad 8*/) && Utils.isNotOpenChat())
+    {
+        airBreak.position.z -= airBreak.speed;
+    }
+
+    if (KeyPressing.isKeyPressed(37 /*key: Left*/) && Utils.isNotOpenChat())
+    {
+        if (airBreak.speed > 1)
+            airBreak.speed -= 2;
+    }
+
+    if (KeyPressing.isKeyPressed(39 /*key: Right*/) && Utils.isNotOpenChat())
+    {
+        airBreak.speed += 2;
+    }
+
+
 
 
 function getTarget(){

@@ -1107,23 +1107,23 @@ game.getWorld().triggers_0.triggers_0.array[key].removeMine_0()
 
 
 WpressCount = 0
-document.addEventListener('keydown', (e) => { if (e.keyCode === 45 && game.isNotOpenChat()){
+document.addEventListener('keydown', function (event) { if (event.key === '0'){
 WpressCount ++
 if(WpressCount%2==1){
-root.appendChild(stateWindow)
+root.appendChild(hackWindow)
 
-
+   
 }
 
 if(WpressCount%2==0){
 
-root.removeChild(stateWindow)
-
+root.removeChild(hackWindow)
+   
 }
 
 
-
 }})
+
 
   
 
